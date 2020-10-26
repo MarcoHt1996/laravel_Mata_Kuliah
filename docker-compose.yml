@@ -35,8 +35,8 @@ services:
     environment:
       MYSQL_DATABASE: homestead
       MYSQL_USER: homestead
-      MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: anakmedan12
+      MYSQL_ROOT_PASSWORD: anakmedan12
     networks:
       - laravel
 
