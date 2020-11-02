@@ -10,32 +10,42 @@
         crossorigin="anonymous">
 </head>
 <body>
+<form action="{{ route('matakuliah.simpan') }}" method="POST" > 
+    @csrf
     <div class="container">
-        <h2>Form Matakuliah</h2>
-        <hr>
-        <form action="{{ route('matakuliah.simpan') }}" method="POST">
+    <h2>Form Matakuliah</h2>
+    <hr>
             @csrf
             <div class="form-group">
-                <label for="kodematakuliah">Kode Mata Kuliah</label>
-                <input type="text" name="kodematkul" class="form-control">
+                <label for="kodemk">Kode Mata Kuliah</label>
+                <input type="text" name="kodematkul" id="kodematkul" class="form-control"
+                value={{ isset($data)?$data->kodematkul:"" }}>
+       
+               
             </div>
+
+ 
             <div class="form-group">
                 <label for="namamatakuliah">Nama Mata kuliah</label>
-                <input type="text" name="matakuliah" class="form-control">
+                <input type="text" name="matakuliah" class="form-control"
+                value={{isset($data)?$data->matakuliah:""}}>
             </div>
             <div class="form-group">
                 <label for="dosen">Dosen</label>
-                <input type="text" name="dosen" class="form-control">
+                <input type="text" name="dosen" class="form-control"
+                value={{isset($data)?$data->dosen:""}}>
             </div>
 
             <div class="form-group">
                 <label for="ruang">Ruang</label>
-                <input type="text" name="ruang" class="form-control">
+                <input type="text" name="ruang" class="form-control"
+                value={{isset($data)?$data->ruang:""}}>
+                
             </div>
 
-            <input type="submit" value="simpan" class="btn btn-primary btn-block">
+            <input type="submit" value="simpan" class="btn btn-success btn-block">
         </form>
-        <hr>
+        <hr>    
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -43,6 +53,8 @@
                     <th>Nama Mata Kuliah</th>
                     <th>Dosen</th>
                     <th>Ruang</th>
+                    <th colspan =2>Action</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -52,6 +64,10 @@
                         <td>{{ $item->matakuliah}}</td>
                         <td>{{ $item->dosen}}</td>
                         <td>{{ $item->ruang}}</td>
+                        <th><a href="{{route('matakuliah.tampil',['id' => $item->id])}}"
+                         class="btn btn-warning btn-block" >Rubah</a></th>
+                    <td><a href="{{ route('matakuliah.hapus',['id' => $item->id]) }}"
+                            class="btn btn-danger btn-block">Hapus</a></td>
                     </tr>
                 @endforeach
             </tbody>
