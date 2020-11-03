@@ -13,6 +13,7 @@ class MatakuliahController extends Controller
         ]);
     }
     //
+   
     public function simpan (Request $request){
         //dd($request);
         \App\Models\Matakuliah::create([
@@ -44,6 +45,7 @@ class MatakuliahController extends Controller
         $matakuliah->matakuliah = $request->matakuliah  ;
         $matakuliah->dosen = $request->dosen;
         $matakuliah->ruang = $request->ruang;
+     
         $matakuliah->save();
         //Kuhusus Rubah Data 
     
